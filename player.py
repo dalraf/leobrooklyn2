@@ -12,6 +12,8 @@ class Player:
         self.sprint = 3
         self.top_walking = 60
         self.down_walking = 170
+        self.left_walking = 0
+        self.right_walking = 380
         self.map_stopped = [(4, 2), (0, 3), (1, 3), (2, 3)]
         self.map_walking = [(3, 3), (4, 3), (0, 4), (1, 4)]
         self.map_shotting = [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0)]
@@ -37,14 +39,16 @@ class Player:
             self.w *= -1
 
     def walk_right(self):
-        self.flip_right()
-        self.x += self.walk_fator
-        self.status = self.walking
+        if self.x < self.right_walking:
+            self.flip_right()
+            self.x += self.walk_fator
+            self.status = self.walking
 
     def walk_left(self):
-        self.flip_left()
-        self.x -= self.walk_fator
-        self.status = self.walking
+        if self.x > self.left_walking:
+            self.flip_left()
+            self.x -= self.walk_fator
+            self.status = self.walking
 
     def walk_up(self):
         if self.y >= self.top_walking:

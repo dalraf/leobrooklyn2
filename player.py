@@ -12,9 +12,11 @@ class Player:
         self.sprint = 3
         self.map_stopped = [(4, 2), (0, 3), (1, 3), (2, 3)]
         self.map_walking = [(3, 3), (4, 3), (0, 4), (1, 4)]
+        self.map_shotting = [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0)]
         self.map = self.map_stopped
         self.walking = "walking"
         self.stopped = "stopped"
+        self.shotting = 'shotting'
         self.status = self.stopped
         self.old_status = self.stopped
 
@@ -46,6 +48,9 @@ class Player:
     def walk_down(self):
         self.y += self.walk_fator
         self.status = self.walking
+    
+    def walk_shotting(self):
+        self.status = self.shotting
 
     def walk_stopped(self):
         self.status = self.stopped
@@ -60,6 +65,9 @@ class Player:
 
         if self.status == self.walking:
             self.map = self.map_walking
+
+        if self.status == self.shotting:
+            self.map = self.map_shotting
 
     def draw(self):
         self.define_map()

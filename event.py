@@ -20,3 +20,6 @@ class Event:
     
     def event_player_stopped(self):
         self.player.walk_stopped()
+    
+    def event_player_shotting(self):
+        self.player.walk_shotting()

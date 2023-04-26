@@ -6,8 +6,8 @@ class Player:
         self.h = 64
         self.x = 0
         self.y = 0
-        self.pos_y = 64
-        self.pos_x = 0
+        self.tile_pos_y = 64
+        self.tile_pos_x = 0
         self.walk_fator = 10
 
     def flip_left(self):
@@ -27,12 +27,18 @@ class Player:
         self.x -= self.walk_fator
 
     def walk_up(self):
-        self.flip_right()
         self.y -= self.walk_fator
 
     def walk_down(self):
-        self.flip_right()
         self.y += self.walk_fator
 
     def draw(self):
-        self.pyxel.blt(self.x, self.y, self.tile_map, self.pos_x, self.pos_y, self.w, self.h)
+        self.pyxel.blt(
+            self.x,
+            self.y,
+            self.tile_map,
+            self.tile_pos_x,
+            self.tile_pos_y,
+            self.w,
+            self.h,
+        )

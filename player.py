@@ -1,7 +1,8 @@
 class Player:
-    def __init__(self, pyxel, tile_map):
+    def __init__(self, pyxel, tile_map, objects):
         self.pyxel = pyxel
         self.tile_map = tile_map
+        self.objects = objects
         self.tile_size = 48
         self.w = self.tile_size
         self.h = self.tile_size
@@ -66,7 +67,14 @@ class Player:
             self.status = self.stopped
     
     def walk_shotting(self):
+        if self.w > 0:
+            direction = 1
+        if self.w < 0:
+            direction = -1
+
+        self.objects.add_pedra(self.x, self.y, direction)
         self.status = self.shotting
+
 
     def walk_attacking(self):
         self.status = self.attacking

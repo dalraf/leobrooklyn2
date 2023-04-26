@@ -23,6 +23,9 @@ class Check_key:
             self.event.event_player_up()
         
         elif self.pyxel.btnp(self.pyxel.KEY_CTRL, hold=self.hold, repeat=self.repeat):
+            self.event.event_player_attacking()
+
+        elif self.pyxel.btnp(self.pyxel.KEY_SPACE, hold=self.hold, repeat=self.repeat):
             self.event.event_player_shotting()
         
         else:

@@ -23,3 +23,6 @@ class Event:
     
     def event_player_shotting(self):
         self.player.walk_shotting()
+    
+    def event_player_attacking(self):
+        self.player.walk_attacking()

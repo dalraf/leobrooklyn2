@@ -13,10 +13,12 @@ class Player:
         self.map_stopped = [(4, 2), (0, 3), (1, 3), (2, 3)]
         self.map_walking = [(3, 3), (4, 3), (0, 4), (1, 4)]
         self.map_shotting = [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0)]
+        self.map_attacking = [(0, 1), (1, 1), (2, 1), (3, 1), (4, 1)]
         self.map = self.map_stopped
         self.walking = "walking"
         self.stopped = "stopped"
         self.shotting = 'shotting'
+        self.attacking = 'attacking'
         self.status = self.stopped
         self.old_status = self.stopped
         self.freeze_map = False
@@ -53,6 +55,9 @@ class Player:
     def walk_shotting(self):
         self.status = self.shotting
 
+    def walk_attacking(self):
+        self.status = self.attacking
+
     def walk_stopped(self):
         self.status = self.stopped
 
@@ -82,6 +87,10 @@ class Player:
 
             if self.status == self.shotting:
                 self.map = self.map_shotting
+                self.verify_freeze_map(active=True)
+
+            if self.status == self.attacking:
+                self.map = self.map_attacking
                 self.verify_freeze_map(active=True)
 
 

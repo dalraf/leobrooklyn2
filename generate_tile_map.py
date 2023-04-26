@@ -4,7 +4,7 @@ import pyxel
 
 # Define as configurações do mapa
 tile_size = 64
-map_width = 10
+map_width = 14
 map_height = 15
 
 # Define o diretório onde estão as imagens

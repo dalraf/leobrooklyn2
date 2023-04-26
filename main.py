@@ -17,7 +17,6 @@ def update():
     check_key.check_key_pressed()
 
 def draw():
-    pyxel.cls(0)
     player.draw()
 
 

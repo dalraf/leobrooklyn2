@@ -1,32 +1,23 @@
 import pyxel
 
-pyxel.init(320, 320)
-player = pyxel.image(0)
-player.load(0, 0, "player.png")
+from player import Player
+from event import Event
+from input import Check_key
 
-class Player():
-    def __init__(self, pyxel):
-        self.image = pyxel.image(0)
-        self.image.load(0, 0, "images/Player-1-Stop-1.png")
-        self.w = 256
-        self.h = 256
-    
-    def flip(self):
-        self.w = self.w * -1
-
-    def draw(self):
-        pyxel.blt(0, 0, self.image, 0, 0, self.w, self.h)
+pyxel.init(480, 480)
 
 player = Player(pyxel)
+event = Event(pyxel, player)
+check_key = Check_key(pyxel, event, player)
+
 
 def update():
-    if pyxel.btnp(pyxel.KEY_Q):
-        pyxel.quit()
-    if pyxel.btnp(pyxel.KEY_L):
-        player.flip()
+    check_key.check_key_pressed()
 
 def draw():
+    pyxel.cls(0)
     player.draw()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     pyxel.run(update, draw)

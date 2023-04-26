@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "leobrooklyn2"
+version = "0.1.0"
+description = ""
+authors = ["Daniel Fonseca Alves <dalraf@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyxel = "^1.9.14"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

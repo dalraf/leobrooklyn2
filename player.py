@@ -6,10 +6,12 @@ class Player:
         self.w = self.tile_size
         self.h = self.tile_size
         self.x = 0
-        self.y = 0
+        self.y = 120
         self.walk_fator = 10
         self.index_map = 0
         self.sprint = 3
+        self.top_walking = 60
+        self.down_walking = 170
         self.map_stopped = [(4, 2), (0, 3), (1, 3), (2, 3)]
         self.map_walking = [(3, 3), (4, 3), (0, 4), (1, 4)]
         self.map_shotting = [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0)]
@@ -45,12 +47,19 @@ class Player:
         self.status = self.walking
 
     def walk_up(self):
-        self.y -= self.walk_fator
-        self.status = self.walking
+        if self.y >= self.top_walking:
+            self.y -= self.walk_fator
+            self.status = self.walking
+        else:
+            self.status = self.stopped
+
 
     def walk_down(self):
-        self.y += self.walk_fator
-        self.status = self.walking
+        if self.y <= self.down_walking:
+            self.y += self.walk_fator
+            self.status = self.walking
+        else:
+            self.status = self.stopped
     
     def walk_shotting(self):
         self.status = self.shotting

@@ -10,14 +10,17 @@ class Check_key:
         if self.pyxel.btnp(self.pyxel.KEY_Q):
             self.event.event_quit()
 
-        if self.pyxel.btnp(self.pyxel.KEY_LEFT, hold=self.hold, repeat=self.repeat):
+        elif self.pyxel.btnp(self.pyxel.KEY_LEFT, hold=self.hold, repeat=self.repeat):
             self.event.event_player_left()
 
-        if self.pyxel.btnp(self.pyxel.KEY_RIGHT, hold=self.hold, repeat=self.repeat):
+        elif self.pyxel.btnp(self.pyxel.KEY_RIGHT, hold=self.hold, repeat=self.repeat):
             self.event.event_player_right()
 
-        if self.pyxel.btnp(self.pyxel.KEY_DOWN, hold=self.hold, repeat=self.repeat):
+        elif self.pyxel.btnp(self.pyxel.KEY_DOWN, hold=self.hold, repeat=self.repeat):
             self.event.event_player_down()
 
-        if self.pyxel.btnp(self.pyxel.KEY_UP, hold=self.hold, repeat=self.repeat):
+        elif self.pyxel.btnp(self.pyxel.KEY_UP, hold=self.hold, repeat=self.repeat):
             self.event.event_player_up()
+        
+        else:
+            self.event.event_player_stopped()

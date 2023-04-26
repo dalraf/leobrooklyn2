@@ -17,3 +17,6 @@ class Event:
 
     def event_player_left(self):
         self.player.walk_left()
+    
+    def event_player_stopped(self):
+        self.player.walk_stopped()

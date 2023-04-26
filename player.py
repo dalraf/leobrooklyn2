@@ -72,7 +72,14 @@ class Player:
         if self.w < 0:
             direction = -1
 
-        self.objects.add_pedra(self.x, self.y, direction)
+        if direction > 0:
+            x = self.x + 40
+        if direction < 0:
+            x = self.x - 10
+        
+        y = self.y + 10
+
+        self.objects.add_pedra(x, y, direction)
         self.status = self.shotting
 
 

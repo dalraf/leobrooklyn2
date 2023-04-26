@@ -1,3 +1,5 @@
+import datetime
+
 class Pedra():
     def __init__(self, pyxel, tile_map, x, y, direction):
         self.pyxel = pyxel
@@ -37,9 +39,12 @@ class Objects():
         self.pyxel = pyxel
         self.tile_map = tile_map
         self.lista_objects = []
+        self.time_armed = datetime.datetime.now()
 
     def add_pedra(self, x, y, direction=1):
-        self.lista_objects.append(Pedra(self.pyxel, self.tile_map, x , y, direction))
+        if (datetime.datetime.now() - self.time_armed).seconds >= 1:
+            self.lista_objects.append(Pedra(self.pyxel, self.tile_map, x , y, direction))
+            self.time_armed = datetime.datetime.now()
 
     def draw(self):
         for object in self.lista_objects:

@@ -1,12 +1,13 @@
 class Player:
-    def __init__(self, pyxel):
+    def __init__(self, pyxel, tile_map):
         self.pyxel = pyxel
-        self.image = self.pyxel.image(0)
-        self.image.load(0, 0, "images/Player-1-Stop-1.png")
+        self.tile_map = tile_map
         self.w = 64
-        self.h = 128
+        self.h = 64
         self.x = 0
         self.y = 0
+        self.pos_y = 64
+        self.pos_x = 0
         self.walk_fator = 10
 
     def flip_left(self):
@@ -34,4 +35,4 @@ class Player:
         self.y += self.walk_fator
 
     def draw(self):
-        self.pyxel.blt(self.x, self.y, self.image, 0, 0, self.w, self.h)
+        self.pyxel.blt(self.x, self.y, self.tile_map, self.pos_x, self.pos_y, self.w, self.h)

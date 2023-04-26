@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 pyxel = "^1.9.14"
+pillow = "^9.5.0"
 
 
 [build-system]

@@ -13,9 +13,10 @@ class Player:
         self.map_stopped = [(4, 2), (0, 3), (1, 3), (2, 3)]
         self.map_walking = [(3, 3), (4, 3), (0, 4), (1, 4)]
         self.map = self.map_stopped
-        self.walking = 'walking'
-        self.stopped = 'stopped'
+        self.walking = "walking"
+        self.stopped = "stopped"
         self.status = self.stopped
+        self.old_status = self.stopped
 
     def tile_coord(self, x, y):
         return x * self.tile_size, y * self.tile_size
@@ -50,17 +51,19 @@ class Player:
         self.status = self.stopped
 
     def define_map(self):
+        if self.status != self.old_status:
+            self.index_map = 0
+            self.old_status = self.status
+
         if self.status == self.stopped:
             self.map = self.map_stopped
-        
+
         if self.status == self.walking:
             self.map = self.map_walking
 
     def draw(self):
         self.define_map()
-        self.index_map = (self.index_map + 1) % (
-            len(self.map) * self.sprint
-        )
+        self.index_map = (self.index_map + 1) % (len(self.map) * self.sprint)
         self.tile_pos_x, self.tile_pos_y = self.tile_coord(
             *self.map[self.index_map // self.sprint]
         )

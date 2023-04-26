@@ -4,10 +4,10 @@ from player import Player
 from event import Event
 from input import Check_key
 
-pyxel.init(960, 480, 'Leo Broklin', 30)
+pyxel.init(480, 240, 'Leo Broklin', 30)
 
 tile_map = pyxel.image(0)
-tile_map.load(0, 0, "tile_mapa.png")
+tile_map.load(0, 0, "tile_player.png")
 player = Player(pyxel, tile_map)
 event = Event(pyxel, player)
 check_key = Check_key(pyxel, event, player)

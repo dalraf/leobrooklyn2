@@ -3,8 +3,8 @@ class Check_key:
         self.event = event
         self.player = player
         self.pyxel = pyxel
-        self.hold = 2
-        self.repeat = 2
+        self.hold = 1
+        self.repeat = 1
 
     def check_key_pressed(self):
         if self.pyxel.btnp(self.pyxel.KEY_Q):

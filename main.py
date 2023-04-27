@@ -26,7 +26,7 @@ def update():
 def draw():
     pyxel.cls(0)
     player.draw()
-    objects.draw()
+    objects.draw(player.paralaxe)
 
 
 if __name__ == "__main__":

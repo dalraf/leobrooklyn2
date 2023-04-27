@@ -11,6 +11,7 @@ class Player:
         self.walk_fator = 10
         self.index_map = 0
         self.sprint = 3
+        self.paralaxe = 0
         self.top_walking = game_height // 3
         self.down_walking = (int(game_height * 0.90) - self.tile_size)
         self.left_walking = 0
@@ -44,17 +45,23 @@ class Player:
             self.flip_right()
             self.x += self.walk_fator
             self.status = self.walking
+            self.paralaxe = 0
+        else:
+            self.status = self.walking
+            self.paralaxe = self.walk_fator
 
     def walk_left(self):
         if self.x > self.left_walking:
             self.flip_left()
             self.x -= self.walk_fator
             self.status = self.walking
+            self.paralaxe = 0
 
     def walk_up(self):
         if self.y >= self.top_walking:
             self.y -= self.walk_fator
             self.status = self.walking
+            self.paralaxe = 0
         else:
             self.status = self.stopped
 
@@ -63,6 +70,7 @@ class Player:
         if self.y <= self.down_walking:
             self.y += self.walk_fator
             self.status = self.walking
+            self.paralaxe = 0
         else:
             self.status = self.stopped
     
@@ -88,6 +96,7 @@ class Player:
 
     def walk_stopped(self):
         self.status = self.stopped
+        self.paralaxe = 0
 
     def verify_freeze_map(self, active=False):
         if active:

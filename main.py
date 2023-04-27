@@ -14,7 +14,7 @@ tile_map_player.load(0, 0, "tile_player.png")
 tile_map_objects = pyxel.image(1)
 tile_map_objects.load(0, 0, "tile_objects.png")
 
-objects = Objects(pyxel, tile_map_objects)
+objects = Objects(pyxel, tile_map_objects, game_witht, game_height,)
 player = Player(pyxel, tile_map_player, game_witht, game_height, objects)
 event = Event(pyxel, player)
 check_key = Check_key(pyxel, event, player)
@@ -22,15 +22,14 @@ check_key = Check_key(pyxel, event, player)
 
 def update():
     check_key.check_key_pressed()
+    objects.update(player)
+
 
 def draw():
     pyxel.cls(0)
     pyxel.camera()
-    objects.draw(game_witht, game_height, player)
+    objects.draw()
     player.draw()
-
-
-
 
 if __name__ == "__main__":
     pyxel.run(update, draw)

@@ -12,6 +12,7 @@ class Player:
         self.index_map = 0
         self.sprint = 3
         self.paralaxe = 0
+        self.explorer_map = [0, game_witht]
         self.top_walking = game_height // 3
         self.down_walking = (int(game_height * 0.90) - self.tile_size)
         self.left_walking = 0
@@ -49,6 +50,7 @@ class Player:
         else:
             self.status = self.walking
             self.paralaxe = self.walk_fator
+            self.explorer_map[1] += self.walk_fator
 
     def walk_left(self):
         if self.x > self.left_walking:
@@ -59,6 +61,7 @@ class Player:
         else:
             self.status = self.walking
             self.paralaxe = -self.walk_fator
+            self.explorer_map[0] += self.walk_fator
 
     def walk_up(self):
         if self.y >= self.top_walking:
@@ -90,7 +93,7 @@ class Player:
         
         y = self.y + 10
 
-        self.objects.add_pedra(x, y, direction)
+        self.objects.add_rock(x, y, direction)
         self.status = self.shotting
 
 

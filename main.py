@@ -5,7 +5,7 @@ from objects import Objects
 from event import Event
 from input import Check_key
 
-pyxel.init(480, 240, 'Leo Broklin', 30)
+pyxel.init(320, 160, 'Leo Broklin', 30)
 
 tile_map_player = pyxel.image(0)
 tile_map_player.load(0, 0, "tile_player.png")

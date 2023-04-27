@@ -49,8 +49,8 @@ class Building:
 
     def update(self, player):
         self.explorer_map = player.explorer_map
-        map_size_left = self.explorer_map[0]
-        map_size_right = self.explorer_map[1]
+        map_size_left = self.explorer_map[0] - 300
+        map_size_right = self.explorer_map[1] + 300
         print(map_size_left, self.get_sum_size_building_left())
         while map_size_left < self.get_sum_size_building_left():
             building_add = Buildind_1(

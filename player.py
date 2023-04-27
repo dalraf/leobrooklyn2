@@ -10,7 +10,7 @@ class Player:
         self.tile_size = 32
         self.w = self.tile_size
         self.h = self.tile_size
-        self.x = 0
+        self.x = 80
         self.y = game_height // 2
         self.walk_fator = 10
         self.index_map = 0
@@ -46,7 +46,7 @@ class Player:
 
     def walk_right(self):
         self.flip_right()
-        if self.x >  self.camera_x + int(self.game_wight * 0.8):
+        if self.x + 80 >  self.camera_x + int(self.game_wight):
             self.camera_x += self.walk_fator
             self.camera(self.camera_x , 0)
         self.x += self.walk_fator
@@ -56,7 +56,7 @@ class Player:
 
     def walk_left(self):
         self.flip_left()
-        if self.x <  self.camera_x:
+        if self.x - 80 <  self.camera_x:
             self.camera_x -= self.walk_fator
             self.camera(self.camera_x , 0)
         self.x -= self.walk_fator

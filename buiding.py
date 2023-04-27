@@ -42,7 +42,7 @@ class Building:
         return sum_building
 
     def get_sum_size_building_left(self):
-        return self.get_sum_size_building(self.lista_building_left)
+        return -1 * self.get_sum_size_building(self.lista_building_left)
 
     def get_sum_size_building_right(self):
         return self.get_sum_size_building(self.lista_building_right)
@@ -51,7 +51,8 @@ class Building:
         self.explorer_map = player.explorer_map
         map_size_left = self.explorer_map[0]
         map_size_right = self.explorer_map[1]
-        while map_size_left > self.get_sum_size_building_left():
+        print(map_size_left, self.get_sum_size_building_left())
+        while map_size_left < self.get_sum_size_building_left():
             building_add = Buildind_1(
                 self.pyxel, self.tile_map, player, self.get_sum_size_building_left()
             )

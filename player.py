@@ -1,8 +1,12 @@
 class Player:
-    def __init__(self, pyxel, tile_map, game_witht, game_height, objects):
+    def __init__(self, pyxel, tile_map, game_witht, game_height, objects, camera):
         self.pyxel = pyxel
         self.tile_map = tile_map
+        self.game_wight = game_witht
+        self.game_height = game_height
         self.objects = objects
+        self.camera =  camera
+        self.camera_x = 0
         self.tile_size = 32
         self.w = self.tile_size
         self.h = self.tile_size
@@ -11,7 +15,6 @@ class Player:
         self.walk_fator = 10
         self.index_map = 0
         self.sprint = 3
-        self.paralaxe = 0
         self.explorer_map = [0, game_witht]
         self.top_walking = game_height // 3
         self.down_walking = (int(game_height * 0.90) - self.tile_size)
@@ -42,32 +45,29 @@ class Player:
             self.w *= -1
 
     def walk_right(self):
-        if self.x < self.right_walking:
-            self.flip_right()
-            self.x += self.walk_fator
-            self.status = self.walking
-            self.paralaxe = 0
-        else:
-            self.status = self.walking
-            self.paralaxe = self.walk_fator
+        self.flip_right()
+        if self.x >  self.camera_x + int(self.game_wight * 0.8):
+            self.camera_x += self.walk_fator
+            self.camera(self.camera_x , 0)
+        self.x += self.walk_fator
+        self.status = self.walking
+        if self.x > self.explorer_map[1]:
             self.explorer_map[1] += self.walk_fator
 
     def walk_left(self):
-        if self.x > self.left_walking:
-            self.flip_left()
-            self.x -= self.walk_fator
-            self.status = self.walking
-            self.paralaxe = 0
-        else:
-            self.status = self.walking
-            self.paralaxe = -self.walk_fator
-            self.explorer_map[0] += self.walk_fator
+        self.flip_left()
+        if self.x <  self.camera_x:
+            self.camera_x -= self.walk_fator
+            self.camera(self.camera_x , 0)
+        self.x -= self.walk_fator
+        self.status = self.walking
+        if self.x < self.explorer_map[0]:
+            self.explorer_map[0] -= self.walk_fator
 
     def walk_up(self):
         if self.y >= self.top_walking:
             self.y -= self.walk_fator
             self.status = self.walking
-            self.paralaxe = 0
         else:
             self.status = self.stopped
 
@@ -76,7 +76,6 @@ class Player:
         if self.y <= self.down_walking:
             self.y += self.walk_fator
             self.status = self.walking
-            self.paralaxe = 0
         else:
             self.status = self.stopped
     

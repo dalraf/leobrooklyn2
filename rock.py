@@ -22,7 +22,6 @@ class Rock:
     def update(self, player):
         if (datetime.datetime.now() - self.time_to_live).seconds <= 3:
             self.x += self.direction * self.sprint
-            self.x -= player.paralaxe
             self.tile_pos_x, self.tile_pos_y = self.tile_coord(*self.map)
         else:
             self.killed = True

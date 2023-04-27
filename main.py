@@ -25,7 +25,7 @@ def update():
 
 
 def draw():
-    pyxel.cls(0)
+    pyxel.cls(pyxel.COLOR_BLACK)
     objects.draw()
     player.draw()
 

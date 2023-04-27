@@ -1,5 +1,5 @@
 class Player:
-    def __init__(self, pyxel, tile_map, objects):
+    def __init__(self, pyxel, tile_map, game_witht, game_height, objects):
         self.pyxel = pyxel
         self.tile_map = tile_map
         self.objects = objects
@@ -7,14 +7,14 @@ class Player:
         self.w = self.tile_size
         self.h = self.tile_size
         self.x = 0
-        self.y = 60
+        self.y = game_height // 2
         self.walk_fator = 10
         self.index_map = 0
         self.sprint = 3
-        self.top_walking = 60
-        self.down_walking = 170
+        self.top_walking = game_height // 3
+        self.down_walking = (int(game_height * 0.90) - self.tile_size)
         self.left_walking = 0
-        self.right_walking = 380
+        self.right_walking = game_witht - self.tile_size
         self.map_stopped = [(3, 5), (4, 5), (5, 5), (6, 5)]
         self.map_walking = [(7, 5), (0, 6), (1, 6), (2, 6)]
         self.map_shotting = [(5, 3), (6, 3), (7, 3), (0, 4), (1, 4)]

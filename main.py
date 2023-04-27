@@ -25,8 +25,11 @@ def update():
 
 def draw():
     pyxel.cls(0)
+    pyxel.camera()
+    objects.draw(game_witht, game_height, player)
     player.draw()
-    objects.draw(player.paralaxe)
+
+
 
 
 if __name__ == "__main__":

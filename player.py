@@ -146,4 +146,5 @@ class Player:
             self.tile_pos_y,
             self.w,
             self.h,
+            0
         )

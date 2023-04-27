@@ -3,13 +3,13 @@ import os
 import glob
 
 # Define as configurações do mapa
-tile_size = 32
-map_width = 256 // 32
-map_height = 256 // 32
+tile_size = 8
+map_width = 256 // 6
+map_height = 256 // 6
 
 # Define o diretório onde estão as imagens
 dir_path = "./images/"
-pattern = '*'
+pattern = 'Object*'
 
 
 # Abre todas as imagens e as adiciona ao arquivo do mapa
@@ -23,7 +23,7 @@ for i, file_name in enumerate(sorted(glob.glob(os.path.join(dir_path, pattern)))
         map_image.paste(tile_image, (x*tile_size, y*tile_size))
 
 # Salva o arquivo do mapa
-map_image.save("tile_player.png")
+map_image.save("tile_objects.png")
 
 
 

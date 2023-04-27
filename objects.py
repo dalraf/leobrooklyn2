@@ -5,7 +5,7 @@ class Pedra():
         self.pyxel = pyxel
         self.map = (1,0)
         self.tile_map = tile_map
-        self.tile_size = 12
+        self.tile_size = 8
         self.w = self.tile_size
         self.h = self.tile_size
         self.x = x

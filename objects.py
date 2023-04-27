@@ -82,7 +82,7 @@ class Objects:
 
     def verifiy_build_coord(self):
         x = 0
-        y = self.player.top_walking - 64 + self.player.tile_size
+        y = self.player.top_walking - 64 + self.player.tile_size - 10
         return x, y
 
     def create_building(self):

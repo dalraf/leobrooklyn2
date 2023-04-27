@@ -56,6 +56,9 @@ class Player:
             self.x -= self.walk_fator
             self.status = self.walking
             self.paralaxe = 0
+        else:
+            self.status = self.walking
+            self.paralaxe = -self.walk_fator
 
     def walk_up(self):
         if self.y >= self.top_walking:

@@ -16,6 +16,7 @@ tile_map_player = pyxel.image(0)
 tile_map_player.load(0, 0, tile_player)
 tile_map_objects = pyxel.image(1)
 tile_map_objects.load(0, 0, tile_objects)
+print(tile_map_objects.width, tile_map_objects.height)
 camera = pyxel.camera
 objects = Objects(
     pyxel,

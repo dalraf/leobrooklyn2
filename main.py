@@ -4,7 +4,7 @@ from player import Player
 from objects import Objects
 from event import Event
 from input import Check_key
-from palette import get_palette, set_palette
+from palette import set_palette, palette
 
 game_witht = 320
 game_height = 160
@@ -12,8 +12,8 @@ tile_player = 'tile_player.png'
 tile_objects = "tile_objects.png"
 
 pyxel.init(game_witht, game_height, "Leo Broklin", 30)
-palette = get_palette(tile_player)
-set_palette(tile_player, tile_objects)
+set_palette(palette, tile_objects)
+set_palette(palette, tile_player)
 
 pyxel.colors.from_list(palette)
 

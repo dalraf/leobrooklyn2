@@ -4,13 +4,14 @@ from player import Player
 from objects import Objects
 from event import Event
 from input import Check_key
+from get_palette import get_palette
 
 game_witht = 320
 game_height = 160
 
 pyxel.init(game_witht, game_height, "Leo Broklin", 30)
-pyxel.colors.from_list([4194304, 8334906, 7946048, 3830606, 2455405, 6515302, 10970933, 8549957, 4043960, 8499607, 15112291, 14589748, 1822680, 13281917, 13152400, 14397277, 14992782])
 
+pyxel.colors.from_list(get_palette('tile_player.png'))
 
 tile_map_player = pyxel.image(0)
 tile_map_player.load(0, 0, "tile_player.png")

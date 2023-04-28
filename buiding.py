@@ -34,6 +34,7 @@ class Building_2(Buildind_1):
         self.tile_pos_y = 8
         self.w = 91
         self.h = 128
+        self.y = self.player.top_walking - self.h + self.player.tile_size - 10
 
 class Building_3(Buildind_1):
     def __init__(self, pyxel, tile_map, player, x_init):
@@ -42,6 +43,7 @@ class Building_3(Buildind_1):
         self.tile_pos_y = 6
         self.w = 38
         self.h = 128
+        self.y = self.player.top_walking - self.h + self.player.tile_size - 10
 
 class Building_4(Buildind_1):
     def __init__(self, pyxel, tile_map, player, x_init):
@@ -49,7 +51,8 @@ class Building_4(Buildind_1):
         self.tile_pos_x = 0
         self.tile_pos_y = 135
         self.w = 92
-        self.h = 122
+        self.h = 121
+        self.y = self.player.top_walking - self.h + self.player.tile_size - 10
 
 
 class Building:

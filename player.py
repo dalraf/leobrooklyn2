@@ -80,21 +80,7 @@ class Player:
             self.status = self.stopped
     
     def walk_shotting(self):
-        if self.w > 0:
-            direction = 1
-        if self.w < 0:
-            direction = -1
-
-        if direction > 0:
-            x = self.x + 40
-        if direction < 0:
-            x = self.x - 10
-        
-        y = self.y + 10
-
-        self.objects.add_rock(x, y, direction)
         self.status = self.shotting
-
 
     def walk_attacking(self):
         self.status = self.attacking
@@ -135,10 +121,25 @@ class Player:
                 self.map = self.map_attacking
                 self.verify_freeze_map(active=True)
 
+    def verify_shotting(self):
+        if self.map == self.map_shotting:
+            if (self.index_map // self.sprint) == (len(self.map) - 1):
+                if self.w > 0:
+                        direction = 1
+                if self.w < 0:
+                    direction = -1
+
+                if direction > 0:
+                    x = self.x + 40
+                if direction < 0:
+                    x = self.x - 10
+                y = self.y + 10
+                self.objects.add_rock(x, y, direction)
 
     def draw(self):
         self.define_map()
         self.index_map = (self.index_map + 1) % (len(self.map) * self.sprint)
+        self.verify_shotting()
         self.tile_pos_x, self.tile_pos_y = self.tile_coord(
             *self.map[self.index_map // self.sprint]
         )

@@ -112,10 +112,10 @@ class Building:
             self.lista_building_right.append(building_add)
 
         for object in self.lista_building_left:
-            object.update(player)
+            object.update()
 
         for object in self.lista_building_right:
-            object.update(player)
+            object.update()
 
     def draw(self):
         for object in self.lista_building_left:

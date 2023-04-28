@@ -5,12 +5,20 @@ class Buildind_1:
         self.pyxel = pyxel
         self.player = player
         self.tile_map = tile_map
+        self.x_init = x_init
         self.w = 115
         self.h = 128
-        self.x = x_init
-        self.y = self.player.top_walking - self.h + self.player.tile_size - 10
         self.tile_pos_x = 0
         self.tile_pos_y = 8
+        self.calculate_x_y()
+    
+    def calculate_x_y(self):
+        self.y  = self.player.top_walking - self.h + self.player.tile_size - 10
+        if self.x_init <= 0:
+            self.x = self.x_init + self.w + 10
+
+        if self.x_init > 0:
+            self.x = self.x_init - self.w - 10
 
     def update(self, player):
         self.x -= player.paralaxe
@@ -34,16 +42,17 @@ class Building_2(Buildind_1):
         self.tile_pos_y = 8
         self.w = 91
         self.h = 128
-        self.y = self.player.top_walking - self.h + self.player.tile_size - 10
+        self.calculate_x_y()
+
 
 class Building_3(Buildind_1):
     def __init__(self, pyxel, tile_map, player, x_init):
         super().__init__(pyxel, tile_map, player, x_init)
         self.tile_pos_x = 209
         self.tile_pos_y = 6
-        self.w = 38
+        self.w = 40
         self.h = 128
-        self.y = self.player.top_walking - self.h + self.player.tile_size - 10
+        self.calculate_x_y()
 
 class Building_4(Buildind_1):
     def __init__(self, pyxel, tile_map, player, x_init):
@@ -52,8 +61,7 @@ class Building_4(Buildind_1):
         self.tile_pos_y = 135
         self.w = 92
         self.h = 121
-        self.y = self.player.top_walking - self.h + self.player.tile_size - 10
-
+        self.calculate_x_y()
 
 class Building:
     def __init__(self, pyxel, tile_map, game_witht, game_height):
@@ -81,12 +89,14 @@ class Building:
         self.explorer_map = player.explorer_map
         map_size_left = self.explorer_map[0] - 300
         map_size_right = self.explorer_map[1] + 300
+
         while map_size_left < self.get_sum_size_building_left():
             Build_class = random.choice(self.building_options)
             building_add = Build_class(
                 self.pyxel, self.tile_map, player, self.get_sum_size_building_left()
             )
             self.lista_building_left.append(building_add)
+
         while map_size_right > self.get_sum_size_building_right():
             Build_class = random.choice(self.building_options)
             building_add = Build_class(

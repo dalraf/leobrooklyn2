@@ -1,5 +1,6 @@
 import random
 
+
 class Buildind_1:
     def __init__(self, pyxel, tile_map, player, x_init):
         self.pyxel = pyxel
@@ -11,23 +12,20 @@ class Buildind_1:
         self.tile_pos_x = 0
         self.tile_pos_y = 8
         self.calculate_x_y()
-    
+
     def calculate_x_y(self):
-        self.y  = self.player.top_walking - self.h + self.player.tile_size - 10
+        self.y = self.player.top_walking - self.h + self.player.tile_size - 10
         if self.x_init < 0:
             self.x = self.x_init - self.w - 10
 
         if self.x_init > 0:
             self.x = self.x_init + 10
-        
+
         if self.x_init == 0:
             self.x = 0
 
-        print(self.x_init)
-        print(self.x)
-
-    def update(self, player):
-        self.x -= player.paralaxe
+    def update(self):
+        pass
 
     def draw(self):
         self.pyxel.blt(
@@ -40,6 +38,7 @@ class Buildind_1:
             self.h,
             0,
         )
+
 
 class Building_2(Buildind_1):
     def __init__(self, pyxel, tile_map, player, x_init):
@@ -60,6 +59,7 @@ class Building_3(Buildind_1):
         self.h = 128
         self.calculate_x_y()
 
+
 class Building_4(Buildind_1):
     def __init__(self, pyxel, tile_map, player, x_init):
         super().__init__(pyxel, tile_map, player, x_init)
@@ -68,6 +68,7 @@ class Building_4(Buildind_1):
         self.w = 92
         self.h = 121
         self.calculate_x_y()
+
 
 class Building:
     def __init__(self, pyxel, tile_map, game_witht, game_height):
@@ -80,7 +81,7 @@ class Building:
         self.building_options = [Buildind_1, Building_2, Building_3, Building_4]
 
     def get_sum_size_building(self, lista):
-        sum_building = sum([i.w + 10 for i in lista])
+        sum_building = sum([i.w + 20 for i in lista])
         if sum_building == None:
             sum_building = 0
         return sum_building

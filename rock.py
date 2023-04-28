@@ -12,7 +12,7 @@ class Rock:
         self.x = x
         self.y = y
         self.direction = direction
-        self.sprint = 5
+        self.sprint = 15
         self.time_to_live = datetime.datetime.now()
         self.killed = False
 

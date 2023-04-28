@@ -12,10 +12,10 @@ tile_player = 'tile_player.png'
 tile_objects = "tile_objects.png"
 
 pyxel.init(game_witht, game_height, "Leo Broklin", 30)
-set_palette(palette, tile_objects)
-set_palette(palette, tile_player)
+#set_palette(palette, tile_objects)
+#set_palette(palette, tile_player)
 
-pyxel.colors.from_list(palette)
+#pyxel.colors.from_list(palette)
 
 tile_map_player = pyxel.image(0)
 tile_map_player.load(0, 0, tile_player)

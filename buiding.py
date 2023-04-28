@@ -48,17 +48,16 @@ class Building_4(Buildind_1):
         super().__init__(pyxel, tile_map, player, x_init)
         self.tile_pos_x = 150
         self.tile_pos_y = 8
-        self.w = 54
+        self.w = 47
         self.h = 64
 
 class Building_5(Buildind_1):
     def __init__(self, pyxel, tile_map, player, x_init):
         super().__init__(pyxel, tile_map, player, x_init)
-        self.tile_pos_x = 204
+        self.tile_pos_x = 197
         self.tile_pos_y = 8
-        self.w = 51
+        self.w = 52
         self.h = 64
-
 
 
 class Building:

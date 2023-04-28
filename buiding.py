@@ -5,8 +5,8 @@ class Buildind_1:
         self.pyxel = pyxel
         self.player = player
         self.tile_map = tile_map
-        self.w = 57
-        self.h = 64
+        self.w = 115
+        self.h = 128
         self.x = x_init
         self.y = self.player.top_walking - self.h + self.player.tile_size - 10
         self.tile_pos_x = 0
@@ -30,10 +30,10 @@ class Buildind_1:
 class Building_2(Buildind_1):
     def __init__(self, pyxel, tile_map, player, x_init):
         super().__init__(pyxel, tile_map, player, x_init)
-        self.tile_pos_x = 58
+        self.tile_pos_x = 116
         self.tile_pos_y = 8
-        self.w = 45
-        self.h = 64
+        self.w = 91
+        self.h = 128
 
 class Building_3(Buildind_1):
     def __init__(self, pyxel, tile_map, player, x_init):
@@ -68,7 +68,7 @@ class Building:
         self.game_height = game_height
         self.lista_building_left = []
         self.lista_building_right = []
-        self.building_options = [Buildind_1, Building_2, Building_3, Building_4, Building_5]
+        self.building_options = [Buildind_1, Building_2]
 
     def get_sum_size_building(self, lista):
         sum_building = sum([i.w + 10 for i in lista])

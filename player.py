@@ -16,7 +16,7 @@ class Player:
         self.index_map = 0
         self.sprint = 3
         self.explorer_map = [0, game_witht]
-        self.top_walking = game_height // 3
+        self.top_walking = int(game_height * 0.5) 
         self.down_walking = (int(game_height * 0.90) - self.tile_size)
         self.left_walking = 0
         self.right_walking = game_witht - self.tile_size

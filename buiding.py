@@ -5,12 +5,12 @@ class Buildind_1:
         self.pyxel = pyxel
         self.player = player
         self.tile_map = tile_map
+        self.w = 57
+        self.h = 64
         self.x = x_init
         self.y = self.player.top_walking - self.h + self.player.tile_size - 10
         self.tile_pos_x = 0
         self.tile_pos_y = 8
-        self.w = 57
-        self.h = 64
 
     def update(self, player):
         self.x -= player.paralaxe

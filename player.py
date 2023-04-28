@@ -19,7 +19,7 @@ class Player:
         self.top_walking = int(game_height * 0.5) 
         self.down_walking = (int(game_height * 0.90) - self.tile_size)
         self.left_walking = 0
-        self.right_walking = game_witht - self.tile_size
+        self.right_walking = game_witht
         self.map_stopped = [(3, 5), (4, 5), (5, 5), (6, 5)]
         self.map_walking = [(7, 5), (0, 6), (1, 6), (2, 6)]
         self.map_shotting = [(5, 3), (6, 3), (7, 3), (0, 4), (1, 4)]
@@ -51,7 +51,7 @@ class Player:
             self.camera(self.camera_x , 0)
         self.x += self.walk_fator
         self.status = self.walking
-        if self.x > self.explorer_map[1]:
+        if (self.x + self.tile_size) > self.explorer_map[1]:
             self.explorer_map[1] += self.walk_fator
 
     def walk_left(self):

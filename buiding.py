@@ -14,11 +14,17 @@ class Buildind_1:
     
     def calculate_x_y(self):
         self.y  = self.player.top_walking - self.h + self.player.tile_size - 10
-        if self.x_init <= 0:
-            self.x = self.x_init + self.w + 10
+        if self.x_init < 0:
+            self.x = self.x_init - self.w - 10
 
         if self.x_init > 0:
-            self.x = self.x_init - self.w - 10
+            self.x = self.x_init + 10
+        
+        if self.x_init == 0:
+            self.x = 0
+
+        print(self.x_init)
+        print(self.x)
 
     def update(self, player):
         self.x -= player.paralaxe

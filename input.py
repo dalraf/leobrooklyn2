@@ -10,23 +10,35 @@ class Check_key:
         if self.pyxel.btnp(self.pyxel.KEY_Q):
             self.event.event_quit()
 
-        elif self.pyxel.btnp(self.pyxel.KEY_LEFT, hold=self.hold, repeat=self.repeat):
+        elif self.pyxel.btnp(
+            self.pyxel.KEY_LEFT, hold=self.hold, repeat=self.repeat
+        ) or self.pyxel.btn(self.pyxel.GAMEPAD1_BUTTON_DPAD_LEFT):
             self.event.event_player_left()
 
-        elif self.pyxel.btnp(self.pyxel.KEY_RIGHT, hold=self.hold, repeat=self.repeat):
+        elif self.pyxel.btnp(
+            self.pyxel.KEY_RIGHT, hold=self.hold, repeat=self.repeat
+        ) or self.pyxel.btn(self.pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT):
             self.event.event_player_right()
 
-        elif self.pyxel.btnp(self.pyxel.KEY_DOWN, hold=self.hold, repeat=self.repeat):
+        elif self.pyxel.btnp(
+            self.pyxel.KEY_DOWN, hold=self.hold, repeat=self.repeat
+        ) or self.pyxel.btn(self.pyxel.GAMEPAD1_BUTTON_DPAD_DOWN):
             self.event.event_player_down()
 
-        elif self.pyxel.btnp(self.pyxel.KEY_UP, hold=self.hold, repeat=self.repeat):
+        elif self.pyxel.btnp(
+            self.pyxel.KEY_UP, hold=self.hold, repeat=self.repeat
+        ) or self.pyxel.btn(self.pyxel.GAMEPAD1_BUTTON_DPAD_UP):
             self.event.event_player_up()
-        
-        elif self.pyxel.btnp(self.pyxel.KEY_CTRL, hold=self.hold, repeat=self.repeat):
+
+        elif self.pyxel.btnp(
+            self.pyxel.KEY_CTRL, hold=self.hold, repeat=self.repeat
+        ) or self.pyxel.btn(self.pyxel.GAMEPAD1_BUTTON_A):
             self.event.event_player_attacking()
 
-        elif self.pyxel.btnp(self.pyxel.KEY_SPACE, hold=self.hold, repeat=self.repeat):
+        elif self.pyxel.btnp(
+            self.pyxel.KEY_SPACE, hold=self.hold, repeat=self.repeat
+        ) or self.pyxel.btn(self.pyxel.GAMEPAD1_BUTTON_B):
             self.event.event_player_shotting()
-        
+
         else:
             self.event.event_player_stopped()

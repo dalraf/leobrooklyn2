@@ -36,8 +36,8 @@ def update():
 
 def draw():
     pyxel.cls(0)
-    pyxel.rect(player.camera_x, 0, game_witht, game_height // 2, pyxel.COLOR_DARK_BLUE)
-    pyxel.rect(player.camera_x, game_height // 2, game_witht, game_height // 2, pyxel.COLOR_GRAY)
+    pyxel.rect(player.camera_x, player.top_walking - 15 + player.tile_size,  game_witht, game_height // 2, pyxel.COLOR_GRAY)
+    pyxel.rect(player.camera_x, player.top_walking + 10 + player.tile_size,  game_witht, 100, pyxel.COLOR_DARK_BLUE)
     objects.draw()
     player.draw()
 

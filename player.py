@@ -17,7 +17,7 @@ class Player:
         self.sprint = 3
         self.explorer_map = [0, game_witht]
         self.top_walking = int(game_height * 0.5) 
-        self.down_walking = (int(game_height * 0.90) - self.tile_size)
+        self.down_walking = (int(game_height * 0.96) - self.tile_size)
         self.left_walking = 0
         self.right_walking = game_witht
         self.map_stopped = [(3, 5), (4, 5), (5, 5), (6, 5)]

@@ -32,12 +32,12 @@ class Check_key:
 
         elif self.pyxel.btnp(
             self.pyxel.KEY_CTRL, hold=self.hold, repeat=self.repeat
-        ) or self.pyxel.btn(self.pyxel.GAMEPAD1_BUTTON_A):
+        ) or self.pyxel.btn(self.pyxel.GAMEPAD1_BUTTON_X):
             self.event.event_player_attacking()
 
         elif self.pyxel.btnp(
             self.pyxel.KEY_SPACE, hold=self.hold, repeat=self.repeat
-        ) or self.pyxel.btn(self.pyxel.GAMEPAD1_BUTTON_B):
+        ) or self.pyxel.btn(self.pyxel.GAMEPAD1_BUTTON_Y):
             self.event.event_player_shotting()
 
         else:

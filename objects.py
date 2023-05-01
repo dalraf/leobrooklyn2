@@ -20,7 +20,10 @@ class Objects:
 
     def update(self, player):
         for object in self.lista_objects:
-            object.update(player)
+            if object.killed:
+                del object
+            else:
+                object.update(player)
 
     def draw(self):
         for object in self.lista_objects:

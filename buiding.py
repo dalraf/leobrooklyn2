@@ -80,6 +80,7 @@ class Building:
         self.lista_building_left = []
         self.lista_building_right = []
         self.building_options = [Buildind_1, Building_2, Building_3, Building_4]
+        self.killed = False
 
     def get_sum_size_building(self, lista):
         sum_building = sum([i.w + 20 for i in lista])

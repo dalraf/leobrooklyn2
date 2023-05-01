@@ -88,7 +88,7 @@ class Building:
         return sum_building
 
     def get_sum_size_building_left(self):
-        return -1 * self.get_sum_size_building(self.lista_building_left)
+        return -1 * self.get_sum_size_building(self.lista_building_left) - 1
 
     def get_sum_size_building_right(self):
         return self.get_sum_size_building(self.lista_building_right)
@@ -98,19 +98,19 @@ class Building:
         map_size_left = self.explorer_map[0] - 300
         map_size_right = self.explorer_map[1] + 300
 
-        while map_size_left <= self.get_sum_size_building_left():
-            Build_class = random.choice(self.building_options)
-            building_add = Build_class(
-                self.pyxel, self.tile_map, player, self.get_sum_size_building_left()
-            )
-            self.lista_building_left.append(building_add)
-
         while map_size_right >= self.get_sum_size_building_right():
             Build_class = random.choice(self.building_options)
             building_add = Build_class(
                 self.pyxel, self.tile_map, player, self.get_sum_size_building_right()
             )
             self.lista_building_right.append(building_add)
+
+        while map_size_left <= self.get_sum_size_building_left():
+            Build_class = random.choice(self.building_options)
+            building_add = Build_class(
+                self.pyxel, self.tile_map, player, self.get_sum_size_building_left()
+            )
+            self.lista_building_left.append(building_add)
 
         for object in self.lista_building_left:
             object.update()

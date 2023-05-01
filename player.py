@@ -136,14 +136,15 @@ class Player:
                 y = self.y + 10
                 self.objects.add_rock(x, y, direction)
 
-    def draw(self):
+    def update(self):
         self.define_map()
         self.index_map = (self.index_map + 1) % (len(self.map) * self.sprint)
         self.verify_shotting()
         self.tile_pos_x, self.tile_pos_y = self.tile_coord(
             *self.map[self.index_map // self.sprint]
         )
-
+    
+    def draw(self):
         self.pyxel.blt(
             self.x,
             self.y,

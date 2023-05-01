@@ -31,7 +31,9 @@ check_key = Check_key(pyxel, event, player)
 
 def update():
     check_key.check_key_pressed()
+    player.update()
     objects.update(player)
+
 
 
 def draw():

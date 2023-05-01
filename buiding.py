@@ -23,6 +23,7 @@ class Buildind_1:
 
         if self.x_init == 0:
             self.x = 0
+        
 
     def update(self):
         pass
@@ -97,14 +98,14 @@ class Building:
         map_size_left = self.explorer_map[0] - 300
         map_size_right = self.explorer_map[1] + 300
 
-        while map_size_left < self.get_sum_size_building_left():
+        while map_size_left <= self.get_sum_size_building_left():
             Build_class = random.choice(self.building_options)
             building_add = Build_class(
                 self.pyxel, self.tile_map, player, self.get_sum_size_building_left()
             )
             self.lista_building_left.append(building_add)
 
-        while map_size_right > self.get_sum_size_building_right():
+        while map_size_right >= self.get_sum_size_building_right():
             Build_class = random.choice(self.building_options)
             building_add = Build_class(
                 self.pyxel, self.tile_map, player, self.get_sum_size_building_right()

@@ -7,7 +7,7 @@ from input import Check_key
 
 game_witht = 640
 game_height = 320
-tile_player = 'tile_player.png'
+tile_player = "tile_player.png"
 tile_objects = "tile_objects.png"
 
 pyxel.init(game_witht, game_height, "Leo Broklin", 30)
@@ -36,8 +36,20 @@ def update():
 
 def draw():
     pyxel.cls(0)
-    pyxel.rect(player.camera_x, player.top_walking - 15 + player.tile_size,  game_witht, game_height // 2, pyxel.COLOR_GRAY)
-    pyxel.rect(player.camera_x, player.top_walking + 10 + player.tile_size,  game_witht, 100, pyxel.COLOR_DARK_BLUE)
+    pyxel.rect(
+        player.camera_x,
+        player.top_walking - 15 + player.tile_size,
+        game_witht,
+        game_height // 2,
+        pyxel.COLOR_GRAY,
+    )
+    pyxel.rect(
+        player.camera_x,
+        player.top_walking + 10 + player.tile_size,
+        game_witht,
+        100,
+        pyxel.COLOR_DARK_BLUE,
+    )
     objects.draw()
     player.draw()
 

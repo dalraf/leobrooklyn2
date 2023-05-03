@@ -65,14 +65,14 @@ class Static_Object:
         map_size_right = self.explorer_map[1] + 300
 
         while map_size_right >= self.get_sum_size_Static_Object_right():
-            Build_class = random.choice(self.Static_Object_options)
+            Build_class = Street_List
             Static_Object_add = Build_class(
                 self.pyxel, player, self.get_sum_size_Static_Object_right()
             )
             self.lista_Static_Object_right.append(Static_Object_add)
 
         while map_size_left <= self.get_sum_size_Static_Object_left():
-            Build_class = random.choice(self.Static_Object_options)
+            Build_class = Street_List
             Static_Object_add = Build_class(
                 self.pyxel, player, self.get_sum_size_Static_Object_left()
             )

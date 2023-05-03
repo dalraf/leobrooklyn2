@@ -53,37 +53,6 @@ class Enemy_1:
         if (self.x + self.tile_size) > self.explorer_map[1]:
             self.explorer_map[1] += self.walk_fator
 
-    def walk_left(self):
-        self.flip_left()
-        self.x -= self.walk_fator
-        self.status = self.walking
-        if self.x < self.explorer_map[0]:
-            self.explorer_map[0] -= self.walk_fator
-
-    def walk_up(self):
-        if self.y >= self.top_walking:
-            self.y -= self.walk_fator
-            self.status = self.walking
-        else:
-            self.status = self.stopped
-
-    def walk_down(self):
-        if self.y <= self.down_walking:
-            self.y += self.walk_fator
-            self.status = self.walking
-        else:
-            self.status = self.stopped
-
-    def walk_shotting(self):
-        self.status = self.shotting
-
-    def walk_attacking(self):
-        self.status = self.attacking
-
-    def walk_stopped(self):
-        self.status = self.stopped
-        self.paralaxe = 0
-
     def verify_freeze_map(self, active=False):
         if active:
             self.freeze_map = True
@@ -139,8 +108,19 @@ class Enemy_1:
         dy = distance_player_y / mod
         if abs(distance_player_x) > self.player.tile_size:
             self.x -= dx * self.sprint
+            self.status = self.walking
+            if dx > 0:
+                self.flip_left()
+            if dx < 0:
+                self.flip_right()
         if abs(distance_player_y) > self.player.tile_size:
             self.y -= dy * self.sprint
+            self.status = self.walking
+        if abs(distance_player_x) < self.player.tile_size and abs(distance_player_x) < self.player.tile_size:
+            self.status = self.stopped
+        if distance_player_x < self.player.tile_size:
+            if random.choice(range(0, 64)) == 0:
+                self.status = random.choice([self.attacking, self.shotting])
 
     def update(self):
         self.define_map()

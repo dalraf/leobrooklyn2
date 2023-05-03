@@ -100,12 +100,27 @@ class Enemy_1:
                 y = self.y + 10
                 self.objects.add_rock(x, y, direction)
 
-    def run_ai(self):
-        distance_player_x = self.x - self.player.x
-        distance_player_y = self.y - self.player.y
-        mod = self.pyxel.sqrt(distance_player_x**2 + distance_player_y**2)
-        dx = distance_player_x / mod
-        dy = distance_player_y / mod
+    def calculate_d(self, x, y):
+        distance_x = self.x - x
+        distance_y = self.y - y
+        mod = self.pyxel.sqrt(distance_x**2 + distance_y**2)
+        dx = distance_x / mod
+        dy = distance_y / mod
+        return dx, dy
+    
+    def calculate_distance(self, x, y):
+        distance_x = self.x - x
+        distance_y = self.y - y
+        return distance_x, distance_y 
+
+    def run_ai(self, lista_enemies):
+        distance_player_x, distance_player_y = self.calculate_distance(self.player.x, self.player.y) 
+        dx, dy = self.calculate_d(self.player.x, self.player.y)
+        for enemy in lista_enemies:
+            if enemy != self:
+                dx_1, dy_1 = self.calculate_d(enemy.x, enemy.y)
+                dx += dx_1
+                dy += dy_1    
         if abs(distance_player_x) > self.player.tile_size:
             self.x -= dx * self.sprint
             self.status = self.walking
@@ -116,16 +131,19 @@ class Enemy_1:
         if abs(distance_player_y) > self.player.tile_size:
             self.y -= dy * self.sprint
             self.status = self.walking
-        if abs(distance_player_x) < self.player.tile_size and abs(distance_player_x) < self.player.tile_size:
+        if (
+            abs(distance_player_x) < self.player.tile_size
+            and abs(distance_player_x) < self.player.tile_size
+        ):
             self.status = self.stopped
         if distance_player_x < self.player.tile_size:
             if random.choice(range(0, 64)) == 0:
                 self.status = random.choice([self.attacking, self.shotting])
 
-    def update(self):
+    def update(self, lista_enemies):
         self.define_map()
         self.index_map = (self.index_map + 1) % (len(self.map) * self.sprint)
-        self.run_ai()
+        self.run_ai(lista_enemies)
         self.verify_shotting()
         self.tile_pos_x, self.tile_pos_y = self.tile_coord(
             *self.map[self.index_map // self.sprint]
@@ -176,7 +194,7 @@ class Enemies:
             self.tick += 1
 
         for object in self.lista_Enemies:
-            object.update()
+            object.update(self.lista_Enemies)
 
     def draw(self):
         for object in self.lista_Enemies:

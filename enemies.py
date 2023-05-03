@@ -134,14 +134,12 @@ class Enemy_1:
     def run_ai(self):
         distance_player_x = self.x - self.player.x
         distance_player_y = self.y - self.player.y
-        if (
-            distance_player_x > self.player.tile_size
-            and distance_player_x > self.player.tile_size
-        ):
-            mod = self.pyxel.sqrt(distance_player_x**2 + distance_player_y**2)
-            dx = distance_player_x / mod
-            dy = distance_player_y / mod
+        mod = self.pyxel.sqrt(distance_player_x**2 + distance_player_y**2)
+        dx = distance_player_x / mod
+        dy = distance_player_y / mod
+        if abs(distance_player_x) > self.player.tile_size:
             self.x -= dx * self.sprint
+        if abs(distance_player_y) > self.player.tile_size:
             self.y -= dy * self.sprint
 
     def update(self):

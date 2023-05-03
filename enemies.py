@@ -132,7 +132,17 @@ class Enemy_1:
                 self.objects.add_rock(x, y, direction)
 
     def run_ai(self):
-        self.x += 1 * self.sprint
+        distance_player_x = self.x - self.player.x
+        distance_player_y = self.y - self.player.y
+        if (
+            distance_player_x > self.player.tile_size
+            and distance_player_x > self.player.tile_size
+        ):
+            mod = self.pyxel.sqrt(distance_player_x**2 + distance_player_y**2)
+            dx = distance_player_x / mod
+            dy = distance_player_y / mod
+            self.x -= dx * self.sprint
+            self.y -= dy * self.sprint
 
     def update(self):
         self.define_map()

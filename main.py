@@ -1,6 +1,7 @@
 import pyxel
 
 from player import Player
+from enemies import Enemies
 from objects import Objects
 from event import Event
 from input import Check_key
@@ -25,6 +26,7 @@ objects = Objects(
     game_height,
 )
 player = Player(pyxel, tile_map_player, game_witht, game_height, objects, camera)
+enemies = Enemies(pyxel, tile_map_player, game_witht, game_height, objects, player)
 event = Event(pyxel, player)
 check_key = Check_key(pyxel, event, player)
 
@@ -32,6 +34,7 @@ check_key = Check_key(pyxel, event, player)
 def update():
     check_key.check_key_pressed()
     player.update()
+    enemies.update()
     objects.update(player)
 
 
@@ -54,6 +57,7 @@ def draw():
     )
     objects.draw()
     player.draw()
+    enemies.draw()
 
 
 if __name__ == "__main__":

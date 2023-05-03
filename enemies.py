@@ -119,8 +119,8 @@ class Enemy_1:
         for enemy in lista_enemies:
             if enemy != self:
                 dx_1, dy_1 = self.calculate_d(enemy.x, enemy.y)
-                dx += dx_1
-                dy += dy_1    
+                dx -= dx_1 / 5
+                dy -= dy_1 / 5
         if abs(distance_player_x) > self.player.tile_size:
             self.x -= dx * self.sprint
             self.status = self.walking

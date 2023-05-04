@@ -42,7 +42,7 @@ def update():
     verify_colision(lista_all, pyxel)
 
 def draw():
-    pyxel.cls(0)
+    pyxel.cls(pyxel.COLOR_BLACK)
     pyxel.rect(
         player.camera_x,
         player.top_walking - 15 + player.tile_size,

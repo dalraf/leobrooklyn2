@@ -39,4 +39,5 @@ class Objects:
 
     def draw(self):
         for object in self.lista_objects:
-            object.draw()
+            if not object.killed:
+                object.draw()

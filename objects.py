@@ -1,6 +1,6 @@
 import datetime
 from buiding import Building
-from rock import Rock_Player, Rock_Enemy
+from rock import Rock
 from static_objects import Static_Object
 
 
@@ -22,11 +22,15 @@ class Objects:
         ]
 
     def add_rock_player(self, x, y, direction=1):
-        self.lista_objects.append(Rock_Player(self.pyxel, self.tile_map, x, y, direction))
+        rock = Rock(self.pyxel, self.tile_map, x, y, direction)
+        rock.shoot_player = True
+        self.lista_objects.append(rock)
 
     
     def add_rock_enemy(self, x, y, direction=1):
-        self.lista_objects.append(Rock_Enemy(self.pyxel, self.tile_map, x, y, direction))
+        rock = Rock(self.pyxel, self.tile_map, x, y, direction)
+        rock.shoot_enemy = True
+        self.lista_objects.append(rock)
 
 
     def update(self, player):

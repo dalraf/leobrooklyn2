@@ -2,7 +2,7 @@ import datetime
 import random
 
 
-class Rock_Player:
+class Rock:
     def __init__(self, pyxel, tile_map, x, y, direction):
         self.pyxel = pyxel
         self.map = (1, 0)
@@ -15,6 +15,8 @@ class Rock_Player:
         self.direction = direction
         self.sprint = random.choice(range(3, 8))
         self.time_to_live = datetime.datetime.now()
+        self.shoot_enemy = False
+        self.shoot_player = False
         self.killed = False
 
     def tile_coord(self, x, y):
@@ -46,6 +48,3 @@ class Rock_Player:
                     0,
                 )
 
-class Rock_Enemy(Rock_Player):
-    def __init__(self, pyxel, tile_map, x, y, direction):
-        super().__init__(pyxel, tile_map, x, y, direction)

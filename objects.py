@@ -32,6 +32,7 @@ class Objects:
     def update(self, player):
         for object in self.lista_objects:
             if object.killed:
+                self.lista_objects.remove(object)
                 del object
             else:
                 object.update(player)

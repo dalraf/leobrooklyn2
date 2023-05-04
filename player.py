@@ -12,7 +12,7 @@ class Player:
         self.h = self.tile_size
         self.x = 80
         self.y = game_height // 2
-        self.walk_fator = 10
+        self.walk_fator = 5
         self.index_map = 0
         self.sprint = 3
         self.explorer_map = [0, game_witht]
@@ -132,10 +132,10 @@ class Player:
                     direction = -1
 
                 if direction > 0:
-                    x = self.x + 40
+                    x = self.x + int(self.tile_size * 0.25)
                 if direction < 0:
-                    x = self.x - 10
-                y = self.y + 10
+                    x = self.x - int(self.tile_size * 0.25)
+                y = self.y + int(self.tile_size * 0.25)
                 self.objects.add_rock_player(x, y, direction)
 
     def update(self):

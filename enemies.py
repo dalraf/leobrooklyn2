@@ -14,7 +14,7 @@ class Enemy_1:
         self.h = self.tile_size
         self.x = self.player.camera_x + self.game_wight
         self.y = game_height // 2
-        self.walk_fator = random.choice(range(1, 10))
+        self.walk_fator = random.choice(range(1, 5))
         self.index_map = 0
         self.sprint = 3
         self.explorer_map = [0, game_witht]
@@ -89,10 +89,10 @@ class Enemy_1:
                     direction = -1
 
                 if direction > 0:
-                    x = self.x + 40
+                    x = self.x + int(self.tile_size * 0.25)
                 if direction < 0:
-                    x = self.x - 10
-                y = self.y + 10
+                    x = self.x - int(self.tile_size * 0.25)
+                y = self.y + int(self.tile_size * 0.25)
                 self.objects.add_rock_enemy(x, y, direction)
 
     def calculate_distance(self, sprite):

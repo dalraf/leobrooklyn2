@@ -142,6 +142,7 @@ class Enemy_1:
         )
 
     def draw(self):
+        self.pyxel.text(self.x, self.y - 5, str(self.life), 15)
         self.pyxel.blt(
             self.x,
             self.y,

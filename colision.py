@@ -22,8 +22,10 @@ def verify_colision(pyxel, objects, enemies, player):
                 if any([isinstance(sprite2, enemy) for enemy in [Enemy_1, Enemy_2]]):
                     distance = sprite1.calculate_distance_damage(sprite2)
                     if distance < 5:
+                        sprite2.life -= sprite1.sprint
+                        if sprite2.life <= 0:
+                            lista_kill.append(sprite2)
                         lista_kill.append(sprite1)
-                        lista_kill.append(sprite2)
     
     for sprite in lista_kill:
         if sprite in objects.lista_objects:

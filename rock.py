@@ -1,4 +1,5 @@
 import datetime
+import random
 
 
 class Rock:
@@ -12,7 +13,7 @@ class Rock:
         self.x = x
         self.y = y
         self.direction = direction
-        self.sprint = 15
+        self.sprint = random.choice(range(8, 15))
         self.time_to_live = datetime.datetime.now()
         self.killed = False
 

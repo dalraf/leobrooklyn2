@@ -14,7 +14,7 @@ class Enemy_1:
         self.h = self.tile_size
         self.x = self.player.camera_x + self.game_wight
         self.y = game_height // 2
-        self.walk_fator = 10
+        self.walk_fator = random.choice(range(1, 10))
         self.index_map = 0
         self.sprint = 3
         self.explorer_map = [0, game_witht]
@@ -34,6 +34,8 @@ class Enemy_1:
         self.status = self.stopped
         self.old_status = self.stopped
         self.freeze_map = False
+        self.killed = False
+        self.life = 3
 
     def tile_coord(self, x, y):
         return x * self.tile_size, y * self.tile_size

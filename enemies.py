@@ -100,47 +100,39 @@ class Enemy_1:
                 y = self.y + 10
                 self.objects.add_rock(x, y, direction)
 
-    def calculate_d(self, x, y):
-        distance_x = self.x - x
-        distance_y = self.y - y
+    def calculate_distance(self, entity):
+        distance_x = self.x - entity.x
+        distance_y = self.y - entity.y
         mod = self.pyxel.sqrt(distance_x**2 + distance_y**2)
         dx = distance_x / mod
         dy = distance_y / mod
-        return dx, dy
-
-    def calculate_distance(self, x, y):
-        distance_x = self.x - x
-        distance_y = self.y - y
-        return distance_x, distance_y
+        return abs(distance_x), abs(distance_y), dx, dy, mod
 
     def run_ai(self, lista_enemies):
-        distance_player_x, distance_player_y = self.calculate_distance(
-            self.player.x, self.player.y
-        )
-        dx, dy = self.calculate_d(self.player.x, self.player.y)
+        distance_x, distance_y, dx, dy, mod = self.calculate_distance(self.player)
         for enemy in lista_enemies:
             if enemy != self:
-                dx_1, dy_1 = self.calculate_d(enemy.x, enemy.y)
+                _, _, dx_1, dy_1, _ = self.calculate_distance(enemy)
                 dx -= dx_1 / len(lista_enemies)
                 dy -= dy_1 / len(lista_enemies)
-        if abs(distance_player_x) > self.player.tile_size:
+        if distance_x > self.player.tile_size:
             self.x -= dx * self.sprint
             self.status = self.walking
             if dx > 0:
                 self.flip_left()
             if dx < 0:
                 self.flip_right()
-        if abs(distance_player_y) > self.player.tile_size:
+        if distance_y > self.player.tile_size:
             self.y -= dy * self.sprint
             self.status = self.walking
-        if (
-            abs(distance_player_x) < self.player.tile_size
-            and abs(distance_player_x) < self.player.tile_size
-        ):
+        if distance_x < self.player.tile_size and distance_y < self.player.tile_size:
             self.status = self.stopped
-        if distance_player_x < self.player.tile_size:
+        if distance_x < self.player.tile_size:
             if random.choice(range(0, 64)) == 0:
-                self.status = random.choice([self.attacking, self.shotting])
+                self.status = self.shotting
+        if mod < self.player.tile_size:
+            if random.choice(range(0, 64)) == 0:
+                self.status = self.attacking
 
     def update(self, lista_enemies):
         self.define_map()

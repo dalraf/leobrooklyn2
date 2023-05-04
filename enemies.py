@@ -118,9 +118,11 @@ class Enemy_1:
             if dx < 0:
                 self.flip_right()
         if distance_y > self.player.tile_size:
-            if self.y > self.top_walking:
+            if self.y >= self.top_walking:
                 self.y -= dy * self.sprint
                 self.status = self.walking
+            else:
+                self.y = self.top_walking
         if distance_x < self.player.tile_size and distance_y < self.player.tile_size:
             self.status = self.stopped
         if distance_x < self.player.tile_size:

@@ -22,10 +22,10 @@ class Enemy_1:
         self.down_walking = int(game_height * 0.96) - self.tile_size
         self.left_walking = 0
         self.right_walking = game_witht
-        self.map_stopped = [(3, 5), (4, 5), (5, 5), (6, 5)]
-        self.map_walking = [(7, 5), (0, 6), (1, 6), (2, 6)]
-        self.map_shotting = [(5, 3), (6, 3), (7, 3), (0, 4), (1, 4)]
-        self.map_attacking = [(2, 4), (3, 4), (4, 4), (5, 4), (6, 4)]
+        self.map_stopped = [(0, 0)]
+        self.map_walking = [(1, 1), (2, 1), (3, 1), (4, 1), (5, 1)]
+        self.map_shotting = [(1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0)]
+        self.map_attacking = [(1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0) ]
         self.map = self.map_stopped
         self.walking = "walking"
         self.stopped = "stopped"
@@ -157,6 +157,14 @@ class Enemy_1:
             0,
         )
 
+class Enemy_2(Enemy_1):
+    def __init__(self, pyxel, tile_map, game_witht, game_height, objects, player):
+        super().__init__(pyxel, tile_map, game_witht, game_height, objects, player)
+        self.map_stopped = [(6, 1)]
+        self.map_walking = [(0, 3), (1, 3), (2, 3), (3, 3), (4, 3)]
+        self.map_shotting = [(7, 1), (0, 2), (1, 2), (2, 2), (3, 2)]
+        self.map_attacking = [(7, 1), (0, 2), (1, 2), (2, 2), (3, 2)]
+
 
 class Enemies:
     def __init__(self, pyxel, tile_map, game_witht, game_height, objects, player):
@@ -169,6 +177,7 @@ class Enemies:
         self.lista_Enemies = []
         self.Enemies_options = [
             Enemy_1,
+            Enemy_2
         ]
         self.killed = False
         self.tick = 0

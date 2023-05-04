@@ -7,8 +7,8 @@ from event import Event
 from input import Check_key
 from colision import verify_colision
 
-game_witht = 640
-game_height = 320
+game_witht = 480
+game_height = 240
 tile_player = "tile_player.png"
 tile_objects = "tile_objects.png"
 
@@ -45,14 +45,14 @@ def draw():
         player.camera_x,
         player.top_walking - 15 + player.tile_size,
         game_witht,
-        game_height // 2,
+        game_height - (player.top_walking - 15 + player.tile_size),
         pyxel.COLOR_GRAY,
     )
     pyxel.rect(
         player.camera_x,
         player.top_walking + 10 + player.tile_size,
         game_witht,
-        100,
+        game_height - 180,
         pyxel.COLOR_DARK_BLUE,
     )
     objects.draw()

@@ -12,7 +12,7 @@ class Enemy_1:
         self.tile_size = 32
         self.w = self.tile_size
         self.h = self.tile_size
-        self.x = self.player.camera_x + self.game_wight
+        self.x = self.player.camera_x + random.choice([0, self.game_wight])
         self.y = game_height // 2
         self.walk_fator = random.choice(range(1, 5))
         self.index_map = 0
@@ -118,15 +118,16 @@ class Enemy_1:
             if dx < 0:
                 self.flip_right()
         if distance_y > self.player.tile_size:
-            self.y -= dy * self.sprint
-            self.status = self.walking
+            if self.y > self.top_walking:
+                self.y -= dy * self.sprint
+                self.status = self.walking
         if distance_x < self.player.tile_size and distance_y < self.player.tile_size:
             self.status = self.stopped
         if distance_x < self.player.tile_size:
-            if random.choice(range(0, 64)) == 0:
+            if random.choice(range(0, 32)) == 0:
                 self.status = self.shotting
         if mod < self.player.tile_size:
-            if random.choice(range(0, 64)) == 0:
+            if random.choice(range(0, 32)) == 0:
                 self.status = self.attacking
 
     def update(self, lista_enemies):
@@ -175,7 +176,7 @@ class Enemies:
         self.killed = False
 
     def update(self):
-        if random.choice(range(0, 256)) == 0:
+        if random.choice(range(0, 128)) == 0:
             self.lista_enemies.append(
                 random.choice(self.enemies_options)(
                     self.pyxel,

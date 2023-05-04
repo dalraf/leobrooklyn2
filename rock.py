@@ -21,8 +21,8 @@ class Rock_Player:
         return x * self.tile_size, y * self.tile_size
 
     def calculate_distance_damage(self, sprite):
-        distance_x = (self.x + (self.w / 2)) - (sprite.x + (sprite.w / 2))
-        distance_y = (self.y + (self.h / 2)) - (sprite.y + (sprite.h / 2))
+        distance_x = (self.x + (self.w / 2)) - (sprite.x + (sprite.w * 0.5))
+        distance_y = (self.y + (self.h / 2)) - (sprite.y + (sprite.h * 0.3))
         mod = self.pyxel.sqrt(distance_x**2 + distance_y**2)
         return mod
     

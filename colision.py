@@ -13,13 +13,11 @@ def verify_colision(pyxel, objects, enemies, player):
             if isinstance(sprite1, Rock_Enemy):
                 if isinstance(sprite2, Player):
                     distance = sprite1.calculate_distance_damage(sprite2)
-                    if distance < (sprite2.tile_size * 0.40):
-                        pyxel.stop()
+                    if distance < 5:
+                        pyxel.quit()
             if isinstance(sprite1, Rock_Player):
                 if any([isinstance(sprite2, enemy) for enemy in [Enemy_1, Enemy_2]]):
                     distance = sprite1.calculate_distance_damage(sprite2)
-                    if distance < 20:
-                        print(distance)
                     if distance < 5:
                         lista_kill.append(sprite1)
                         lista_kill.append(sprite2)

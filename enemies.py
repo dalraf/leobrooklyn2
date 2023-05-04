@@ -35,7 +35,7 @@ class Enemy_1:
         self.old_status = self.stopped
         self.freeze_map = False
         self.killed = False
-        self.life = 3
+        self.life = 10
 
     def tile_coord(self, x, y):
         return x * self.tile_size, y * self.tile_size
@@ -95,6 +95,12 @@ class Enemy_1:
                 y = self.y + int(self.tile_size * 0.25)
                 self.objects.add_rock_enemy(x, y, direction)
 
+    def calculate_distance_damage(self, sprite):
+        distance_x = (self.x + (self.w / 2)) - (sprite.x + (sprite.w / 2))
+        distance_y = (self.y + (self.h / 2)) - (sprite.y + (sprite.h / 2))
+        mod = self.pyxel.sqrt(distance_x**2 + distance_y**2)
+        return mod
+
     def calculate_distance(self, sprite):
         distance_x = self.x - sprite.x
         distance_y = self.y - sprite.y
@@ -142,7 +148,6 @@ class Enemy_1:
         )
 
     def draw(self):
-        self.pyxel.text(self.x, self.y - 5, str(self.life), 15)
         self.pyxel.blt(
             self.x,
             self.y,

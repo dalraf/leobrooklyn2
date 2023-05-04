@@ -32,8 +32,9 @@ class Player:
         self.status = self.stopped
         self.old_status = self.stopped
         self.freeze_map = False
-        self.life = 20
+        self.life = 50
         self.killed = False
+        self.placar = 0
 
     def tile_coord(self, x, y):
         return x * self.tile_size, y * self.tile_size
@@ -137,6 +138,12 @@ class Player:
                     x = self.x - int(self.tile_size * 0.25)
                 y = self.y + int(self.tile_size * 0.25)
                 self.objects.add_rock_player(x, y, direction)
+    
+    def calculate_distance_damage(self, sprite):
+        distance_x = (self.x + (self.w / 2)) - (sprite.x + (sprite.w / 2))
+        distance_y = (self.y + (self.h / 2)) - (sprite.y + (sprite.h / 2))
+        mod = self.pyxel.sqrt(distance_x**2 + distance_y**2)
+        return mod
 
     def update(self):
         self.define_map()
@@ -147,7 +154,6 @@ class Player:
         )
     
     def draw(self):
-        self.pyxel.text(self.x, self.y - 5, str(self.life), 15)
         self.pyxel.blt(
             self.x,
             self.y,

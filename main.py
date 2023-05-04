@@ -41,6 +41,7 @@ def update():
 
 def draw():
     pyxel.cls(pyxel.COLOR_BLACK)
+    pyxel.text(player.camera_x, 0, f"Vida: {player.life}, Placar:{player.placar}", 15)
     pyxel.rect(
         player.camera_x,
         player.top_walking - 15 + player.tile_size,

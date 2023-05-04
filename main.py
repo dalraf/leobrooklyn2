@@ -56,9 +56,10 @@ def draw():
         pyxel.COLOR_DARK_BLUE,
     )
     objects.draw()
-    player.draw()
-    enemies.draw()
-
+    lista_sprites = enemies.lista_Enemies.copy()
+    lista_sprites.append(player)
+    for sprite in sorted(lista_sprites, key=lambda spr: spr.y):
+        sprite.draw()
 
 if __name__ == "__main__":
     pyxel.run(update, draw)

@@ -48,13 +48,6 @@ class Enemy_1:
         if self.w < 0:
             self.w *= -1
 
-    def walk_right(self):
-        self.flip_right()
-        self.x += self.walk_fator
-        self.status = self.walking
-        if (self.x + self.tile_size) > self.explorer_map[1]:
-            self.explorer_map[1] += self.walk_fator
-
     def verify_freeze_map(self, active=False):
         if active:
             self.freeze_map = True
@@ -102,9 +95,9 @@ class Enemy_1:
                 y = self.y + 10
                 self.objects.add_rock(x, y, direction)
 
-    def calculate_distance(self, entity):
-        distance_x = self.x - entity.x
-        distance_y = self.y - entity.y
+    def calculate_distance(self, sprite):
+        distance_x = self.x - sprite.x
+        distance_y = self.y - sprite.y
         mod = self.pyxel.sqrt(distance_x**2 + distance_y**2)
         dx = distance_x / mod
         dy = distance_y / mod

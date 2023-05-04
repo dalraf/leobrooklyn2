@@ -173,10 +173,9 @@ class Enemies:
             Enemy_2
         ]
         self.killed = False
-        self.tick = 0
 
     def update(self):
-        if self.tick > 120:
+        if random.choice(range(0, 256)) == 0:
             self.lista_Enemies.append(
                 random.choice(self.Enemies_options)(
                     self.pyxel,
@@ -187,9 +186,6 @@ class Enemies:
                     self.player,
                 )
             )
-            self.tick = 0
-        else:
-            self.tick += 1
 
         for object in self.lista_Enemies:
             object.update(self.lista_Enemies)

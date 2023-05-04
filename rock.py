@@ -20,6 +20,12 @@ class Rock:
     def tile_coord(self, x, y):
         return x * self.tile_size, y * self.tile_size
     
+    def calculate_distance(self, sprite):
+        distance_x = self.x - sprite.x
+        distance_y = self.y - sprite.y
+        mod = self.pyxel.sqrt(distance_x**2 + distance_y**2)
+        return mod
+    
     def update(self, player):
         if (datetime.datetime.now() - self.time_to_live).seconds <= 1:
             self.x += self.direction * self.sprint

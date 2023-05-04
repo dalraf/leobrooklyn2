@@ -5,6 +5,7 @@ from enemies import Enemies
 from objects import Objects
 from event import Event
 from input import Check_key
+from colision import verify_colision
 
 game_witht = 640
 game_height = 320
@@ -36,8 +37,9 @@ def update():
     player.update()
     enemies.update()
     objects.update(player)
-
-
+    lista_all = objects.lista_objects.copy() + enemies.lista_Enemies.copy()
+    lista_all.append(player)
+    verify_colision(lista_all, pyxel)
 
 def draw():
     pyxel.cls(0)

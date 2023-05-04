@@ -37,9 +37,7 @@ def update():
     player.update()
     enemies.update()
     objects.update(player)
-    lista_all = objects.lista_objects.copy() + enemies.lista_Enemies.copy()
-    lista_all.append(player)
-    verify_colision(lista_all, pyxel)
+    verify_colision(pyxel, objects, enemies, player)
 
 def draw():
     pyxel.cls(pyxel.COLOR_BLACK)
@@ -58,10 +56,11 @@ def draw():
         pyxel.COLOR_DARK_BLUE,
     )
     objects.draw()
-    lista_sprites = enemies.lista_Enemies.copy()
+    lista_sprites = enemies.lista_enemies.copy()
     lista_sprites.append(player)
     for sprite in sorted(lista_sprites, key=lambda spr: spr.y):
         sprite.draw()
 
 if __name__ == "__main__":
     pyxel.run(update, draw)
+

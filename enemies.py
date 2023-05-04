@@ -93,7 +93,7 @@ class Enemy_1:
                 if direction < 0:
                     x = self.x - 10
                 y = self.y + 10
-                self.objects.add_rock(x, y, direction)
+                self.objects.add_rock_enemy(x, y, direction)
 
     def calculate_distance(self, sprite):
         distance_x = self.x - sprite.x
@@ -167,8 +167,8 @@ class Enemies:
         self.game_height = game_height
         self.objects = objects
         self.player = player
-        self.lista_Enemies = []
-        self.Enemies_options = [
+        self.lista_enemies = []
+        self.enemies_options = [
             Enemy_1,
             Enemy_2
         ]
@@ -176,8 +176,8 @@ class Enemies:
 
     def update(self):
         if random.choice(range(0, 256)) == 0:
-            self.lista_Enemies.append(
-                random.choice(self.Enemies_options)(
+            self.lista_enemies.append(
+                random.choice(self.enemies_options)(
                     self.pyxel,
                     self.tile_map,
                     self.game_witht,
@@ -187,9 +187,9 @@ class Enemies:
                 )
             )
 
-        for object in self.lista_Enemies:
-            object.update(self.lista_Enemies)
+        for object in self.lista_enemies:
+            object.update(self.lista_enemies)
 
     def draw(self):
-        for object in self.lista_Enemies:
+        for object in self.lista_enemies:
             object.draw()

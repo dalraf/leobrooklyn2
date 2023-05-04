@@ -136,7 +136,7 @@ class Player:
                 if direction < 0:
                     x = self.x - 10
                 y = self.y + 10
-                self.objects.add_rock(x, y, direction)
+                self.objects.add_rock_player(x, y, direction)
 
     def update(self):
         self.define_map()

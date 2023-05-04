@@ -1,6 +1,6 @@
 import datetime
 from buiding import Building
-from rock import Rock
+from rock import Rock_Player, Rock_Enemy
 from static_objects import Static_Object
 
 
@@ -20,12 +20,14 @@ class Objects:
             Building(pyxel, tile_map, game_witht, game_height),
             Static_Object(pyxel, tile_map, game_witht, game_height),
         ]
-        self.time_armed = datetime.datetime.now()
 
-    def add_rock(self, x, y, direction=1):
-        if (datetime.datetime.now() - self.time_armed).seconds >= 1:
-            self.lista_objects.append(Rock(self.pyxel, self.tile_map, x, y, direction))
-            self.time_armed = datetime.datetime.now()
+    def add_rock_player(self, x, y, direction=1):
+        self.lista_objects.append(Rock_Player(self.pyxel, self.tile_map, x, y, direction))
+
+    
+    def add_rock_enemy(self, x, y, direction=1):
+        self.lista_objects.append(Rock_Enemy(self.pyxel, self.tile_map, x, y, direction))
+
 
     def update(self, player):
         for object in self.lista_objects:

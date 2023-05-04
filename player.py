@@ -32,7 +32,7 @@ class Player:
         self.status = self.stopped
         self.old_status = self.stopped
         self.freeze_map = False
-        self.life = 10
+        self.life = 20
         self.killed = False
 
     def tile_coord(self, x, y):

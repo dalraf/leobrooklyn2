@@ -107,20 +107,22 @@ class Enemy_1:
         dx = distance_x / mod
         dy = distance_y / mod
         return dx, dy
-    
+
     def calculate_distance(self, x, y):
         distance_x = self.x - x
         distance_y = self.y - y
-        return distance_x, distance_y 
+        return distance_x, distance_y
 
     def run_ai(self, lista_enemies):
-        distance_player_x, distance_player_y = self.calculate_distance(self.player.x, self.player.y) 
+        distance_player_x, distance_player_y = self.calculate_distance(
+            self.player.x, self.player.y
+        )
         dx, dy = self.calculate_d(self.player.x, self.player.y)
         for enemy in lista_enemies:
             if enemy != self:
                 dx_1, dy_1 = self.calculate_d(enemy.x, enemy.y)
-                dx -= dx_1 / 5
-                dy -= dy_1 / 5
+                dx -= dx_1 / len(lista_enemies)
+                dy -= dy_1 / len(lista_enemies)
         if abs(distance_player_x) > self.player.tile_size:
             self.x -= dx * self.sprint
             self.status = self.walking

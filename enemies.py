@@ -110,12 +110,14 @@ class Enemy_1:
         return abs(distance_x), abs(distance_y), dx, dy, mod
 
     def run_ai(self, lista_enemies):
+
         distance_x, distance_y, dx, dy, mod = self.calculate_distance(self.player)
         for enemy in lista_enemies:
             if enemy != self:
                 _, _, dx_1, dy_1, _ = self.calculate_distance(enemy)
                 dx -= dx_1 / len(lista_enemies)
                 dy -= dy_1 / len(lista_enemies)
+
         if distance_x > self.player.tile_size:
             self.x -= dx * self.sprint
             self.status = self.walking
@@ -123,13 +125,14 @@ class Enemy_1:
                 self.flip_left()
             if dx < 0:
                 self.flip_right()
-        if distance_y > self.player.tile_size:
-            if self.y >= self.top_walking:
-                self.y -= dy * self.sprint
-                self.status = self.walking
-            else:
-                self.y = self.top_walking
-        if distance_x < self.player.tile_size and distance_y < self.player.tile_size:
+
+        if self.y >= self.top_walking:
+            self.y -= dy * self.sprint
+            self.status = self.walking
+        else:
+            self.y = self.top_walking
+
+        if distance_x < self.player.tile_size and self.x == self.player.y:
             self.status = self.stopped
         if distance_x < self.player.tile_size:
             if random.choice(range(0, 32)) == 0:

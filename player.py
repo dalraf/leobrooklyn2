@@ -87,6 +87,7 @@ class Player:
 
     def walk_attacking(self):
         self.status = self.attacking
+        self.pyxel.play(0, 0)
 
     def walk_stopped(self):
         self.status = self.stopped
